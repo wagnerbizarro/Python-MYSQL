@@ -58,8 +58,9 @@ def select_all():
 #Menu
 #-------------------------------------#
 menu = 50
+submenu = 50
 while menu != '0':
-    menu = input("0-Sair\n1-Show\n2-Insert\n3-Delete\n:")
+    menu = input("0-Exit\n1-Show\n2-Insert\n3-Delete\n:")
 
     if menu == '0':
         break
@@ -67,26 +68,38 @@ while menu != '0':
     elif menu == '1':
         print("\n" *10)
         print("Show")
-        submenu = input("1-All\n2-Model\n3-Brand\n:")
-        
+        while submenu != '0':
+            submenu = input("0-Exit\n1-All\n2-Model\n3-Brand\n:")
+
+            if submenu == '0':
+                break
+
+            elif submenu == "1":
+                select_all()
+                input("\nPress ENTER to Go Back")
+            
+            elif submenu == "2":
+                model = input("Model:")
+                select_model(model)
+                input("\nPress ENTER to Go Back")
+            
+            elif submenu == "3":
+                brand = input("Brand:")
+                select_brand(brand)
+                input("\nPress ENTER to Go Back")
+
     elif menu == '2':
         print("\n" *10)
         print("Insert")
-    
+        brand = input("\nBrand:")
+        model = input("\nModel:")
+        year = input("\nYear:")
+        insert(brand,model,year)
+        input("\nPress ENTER to Go Back")
+
     elif menu == '3':
         print("\n" *10)
         print("Delete")
-
-"""
-if menu 
-brand="FORD"
-model="MUSTANG"
-year="2011"
-id="5"
-
-#insert(brand,model,year)
-#delete(id)
-#select_brand(brand)
-#select_model(model)
-#select_all()
-"""
+        id = input("ID:")
+        delete(id)
+        input("\nPress ENTER to Go Back")
